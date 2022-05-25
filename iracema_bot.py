@@ -42,8 +42,9 @@ async def cotacao(ctx, coin):
         high = float(fulljson.get(f"high"))
         low = float(fulljson.get("low"))
         median_price = (high + low)/2
+        moedasvalidas = MoedasValidas(coin)
 
-        if MoedasValidas.validadorDeMoeda(coin):
+        if moedasvalidas.validadorDeMoeda():
             await ctx.send(f"O valor do {coin} é {median_price:.2f} reais")
         else:
             await ctx.send(f"O valor {coin} é invalido")

@@ -10,7 +10,7 @@ class MoedasValidas():
     def __init__(self, moeda) -> None:
         self.moeda = moeda
     
-    def validadorDeMoeda(self):
+    def validadorDeMoeda(self) -> bool:
         if self.moeda in moedas_validas:
             return True
         else:
