@@ -38,17 +38,17 @@ async def cotacao(ctx, coin):
     try:
         resposta = requests.get(f"https://economia.awesomeapi.com.br/json/last/{coin.upper()}-BRL")
         data = resposta.json() # {"USDBRL":{"code":"USD","codein":"BRL","name":"Dólar Americano/Real Brasileiro","high":"4.8536","low":"4.776","varBid":"0.0075","pctChange":"0.16","bid":"4.819","ask":"4.822","timestamp":"1653424057","create_date":"2022-05-24 17:27:37"}}
-        fulljson = data.get(f"{coin}BRL")
+        fulljson = data.get(f"{coin.upper()}BRL")
         high = float(fulljson.get(f"high"))
         low = float(fulljson.get("low"))
         median_price = (high + low)/2
-        moedasvalidas = MoedasValidas(coin)
+        moedasvalidas = MoedasValidas(coin.upper())
 
         if moedasvalidas.validadorDeMoeda():
             await ctx.send(f"O valor do {coin} é {median_price:.2f} reais")
 
     except:
-        await ctx.send(f"A moeda {coin} é invalido")
+        await ctx.send(f"A moeda {coin} é invalida")
 
 @bot.command(name="apresentação")
 async def presentention_model(ctx):
