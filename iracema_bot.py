@@ -46,12 +46,9 @@ async def cotacao(ctx, coin):
 
         if moedasvalidas.validadorDeMoeda():
             await ctx.send(f"O valor do {coin} é {median_price:.2f} reais")
-        else:
-            await ctx.send(f"O valor {coin} é invalido")
 
-    
     except:
-        await ctx.send("Ops ... Deu algum erro!")
+        await ctx.send(f"A moeda {coin} é invalido")
 
 @bot.command(name="apresentação")
 async def presentention_model(ctx):
