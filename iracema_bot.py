@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 from key_bot.token_bot import token
 import requests
-import moedas_validas
+from moedas_validas import MoedasValidas
 
 
 bot = commands.Bot("$")
@@ -43,7 +43,7 @@ async def cotacao(ctx, coin):
         low = float(fulljson.get("low"))
         median_price = (high + low)/2
 
-        if median_price:
+        if MoedasValidas.validadorDeMoeda(coin):
             await ctx.send(f"O valor do {coin} é {median_price:.2f} reais")
         else:
             await ctx.send(f"O valor {coin} é invalido")
