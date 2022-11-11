@@ -1,11 +1,11 @@
 import discord
 from discord.ext import commands
-from key_bot.token_bot import token
+from key_bot import token
 import requests
 from moedas_validas import MoedasValidas
 
 
-bot = commands.Bot("$")
+bot = commands.Bot('$')
 
 
 @bot.event
